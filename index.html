@@ -2,10 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0">
+    <title>浙江财经大学健康通行码</title>
+    <style type="text/css">
+        html, body, img, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 480px;
+            margin: 0 auto;
+        }
+
+        .font1 {
+            font-family: Microsoft YaHei UI, 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+            color: #424441;
+            font-size: 46px;
+            font-weight: bold;
+        }
+
+        .font2 {
+            font-family: Microsoft YaHei UI, 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+            color: #424441;
+            font-size: 54px;
+            font-weight: bold;
+        }
+
+        .time-group {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 66px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<span id="time">ttt</span>
+<div class="wrapper" id="wrapper">
+    <div class="time-group">
+        <p id="date" class="font1">04月03日</p>
+        <p id="time" class="font2">14:35:37</p>
+    </div>
+    <img width="480" src="bg.jpg" alt="">
+</div>
 <script>
     Date.prototype.Format = function (fmt) { // author: meizz
         var o = {
@@ -23,7 +65,19 @@
             if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
         return fmt;
     }
-    window.setInterval(()=>{document.getElementById("time").innerHTML = new Date().Format("yyyy-MM-dd hh:mm:ss");},1000)
+
+    let scale = window.screen.availWidth / 480;
+    scale = scale.toFixed(2);
+    let wrapper = document.getElementById('wrapper');
+    wrapper.style.transform = 'scale(' + scale + ')';
+    wrapper.style.transformOrigin = 'left top';
+    document.getElementById('date').innerHTML = new Date().Format("MM月dd日");
+    document.getElementById('time').innerHTML = new Date().Format("hh:mm:ss");
+
+    window.setInterval(() => {
+        document.getElementById('date').innerHTML = new Date().Format("MM月dd日");
+        document.getElementById('time').innerHTML = new Date().Format("hh:mm:ss");
+    }, 1000)
 </script>
 </body>
 </html>
