@@ -17,7 +17,7 @@
         }
 
         .font1 {
-            margin-bottom: -6px;
+            margin-bottom: -2px;
             font-family: Microsoft YaHei UI, 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
             color: #424441;
             font-size: 46px;
@@ -39,6 +39,18 @@
             margin: auto;
             text-align: center;
         }
+
+        .time-validity{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 606px;
+            margin: auto;
+            font-family: Microsoft YaHei UI, 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+            color: #999;
+            font-size: 17px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -46,6 +58,9 @@
     <div class="time-group">
         <p id="date" class="font1">04月03日</p>
         <p id="time" class="font2">14:35:37</p>
+    </div>
+    <div class="time-validity">
+        <p id="tiem_v">有效期：2022-04-03 00:00-24:00</p>
     </div>
     <img width="480" src="bg.jpg" alt="">
 </div>
@@ -74,10 +89,12 @@
     wrapper.style.transformOrigin = 'left top';
     document.getElementById('date').innerHTML = new Date().Format("MM月dd日");
     document.getElementById('time').innerHTML = new Date().Format("hh:mm:ss");
+    document.getElementById('tiem_v').innerHTML = new Date().Format("有效期：yyyy-MM-dd 00:00-24:00");
 
     window.setInterval(() => {
         document.getElementById('date').innerHTML = new Date().Format("MM月dd日");
         document.getElementById('time').innerHTML = new Date().Format("hh:mm:ss");
+        document.getElementById('tiem_v').innerHTML = new Date().Format("有效期：yyyy-MM-dd 00:00-24:00");
     }, 1000)
 </script>
 </body>
